@@ -1,0 +1,123 @@
+GIT MOMENTO
+
+*Back to Commit d'Identification <96404c63e34ad49e71902064>
+->git reset --hard 96404c63e34ad49e71902064b1e67559f896d2f6
+->git remote -v
+->git log oneline
+
+Git dia toa hazo anakiray, d manana branche
+
+créer ".gitignore"
+*D tapena 
+->git status
+->git add .gitignore
+->git commit -m "ajouter .gitignore"
+->git config --global user.email "mailnao@gmail.com"
+->git config --global user.name ''anaranao"
+->git commit -m "AnaranaMbaExplicite"
+
+Historique Commit:
+->git log
+
+*Manangana Branche
+->git checkout -b AnaranaNleBranche
+
+*Rah hijery Branche Misy anao:
+->git branch
+
+*git push command d spécifier-na ny branch Talôhà mba ho lasa anaran' branche vaovao
+->git push <remote> -u :<old_branch_name> <new_branch_name> 
+
+*if you'arent on the target branch
+->git checkout <branchName>
+
+*rename a branch: going on target branch
+->git branch -m "quickfix" 
+
+*Delete Branch anaty repository:
+->git push -d <remote_name> <bran_chname>
+
+*Hanadiouh commit:
+->git reset HEAD YOUR-FILE
+
+*Manamboatra Fichier
+-> touch setup.txt
+
+*Ampidirina anaty git refa avy modifiena
+->git add "setup.txt"
+
+*D ampidirina anaty commit refa avy nampidirina anaty git
+->git commit -m "Nanao an'Zao zah"
+
+*Jerena ny retouchage natao tao anaty le fichier
+->git diff setup.txt
+
+*D manao commit
+->git commit -m "Modification nataonlà tao @le Fichier"
+
+*Jerena Historique
+->git log
+
+*Rah tsy tadidy anaran'le Brance d
+-> git branch
+
+*Handefa an'azy
+->git merge AnaranleBranche
+*
+->git remote add origin "your_url_name" 
+origin: Nom de la projet
+->git push "remote_name" "brance_name" 
+
+url_name: Lien de la repository cible... 
+->git remote remove <remote_name>
+->git push -u origina main
+->git pull 'remote_name' "branch_name"
+
+=> ssh-keygen 
+*Create SSH key on github:
+->ssh-keygen -t rsa -b 4096 -C "sehenoarinaivo@gmail.com"
+
+*Afficher le ssh dans le home'... 
+->cat ~/.ssh/id_rsa.pub
+
+->ssh-keygen -t ed25519 -C "your_email@gmail.com" 
+
+->git checkout <etiquetteCommit> -- <repertoire(path)>
+->git checkout c468088abd7eb496cd1e9527ad63f222a576a691 -- public/js/listUserSearched
+->git checkout <etiquetteCommit> -- <repertoire(path)>
+
+
+
+
+
+
+PROBLËM DE PUSH:
+1)->rm -rf .git/
+2)->git init
+3)->git remote add origin https://repository.remote.url
+4)-> git add . 
+5)->git commit -m "Commit message" 
+6)->git push -f origin master
+
+company_space/ticket/list
+
+
+    let value = $("#select_model_tache").val().split('_');
+    let type_contrat_abrev = $("#type_contrat_abrev").val() == "1" ? "mr" : "ma";
+    let type = (type_contrat_abrev == "1") ? "MR" : "MA";
+    let list_tr = document.getElementsByClassName("tache_tr_"+type_contrat_abrev);alert(list_tr.length);
+    let dernier_tr = list_tr.length - 1;
+    let new_numero_ligne = (list_tr.length == 0) ? list_tr.length : parseInt(list_tr[dernier_tr].id.split("_")[3]) + 1;
+    
+    let view ='<tr id="tache_'+type_contrat_abrev+'_tr_'+new_numero_ligne+'" class="tache_tr_'+type_contrat_abrev+'"> <th>';
+    view += '<input type="hidden" name="id_tache_'+type_contrat_abrev+'[]" value="" />';
+    view +='<input type="hidden" name="id_model_tache_'+type_contrat_abrev+'[]" value="'+value[0]+'" />';
+    view +='<input type="text" name="nom_tache_'+type_contrat_abrev+'[]" value="'+value[1]+'" /> </th>';
+    view +='<th>'+value[1]+'</th>';
+    view +='<th><input type="hidden" id="idcollaborateur_'+new_numero_ligne+'" name="id_collaborateur_'+type_contrat_abrev+'[]" value="" />';
+    view +='<input type="text" name="nom_collaborateur_'+type_contrat_abrev+'[]" id="nomcollaborateur_'+new_numero_ligne+'" onclick="change_assignation_gm(this)"> </th>';
+    view +='<th><input type="date" id="deadline_'+type_contrat_abrev+'_'+new_numero_ligne+'" name="deadline_'+type_contrat_abrev+'[]" /></th>';
+    if(type == "MR" || type_contrat_abrev == "mr") view +='<th><input type="date" id="deadline_real_'+type_contrat_abrev+'_'+new_numero_ligne+'" name="deadline_real_'+type_contrat_abrev+'[]" /></th>';
+    view +='<th> <a href="#" onclick="supprimer_une_tache('+new_numero_ligne+', \''+type+'\')" >';
+    view +='<img src="'+$("#base_url").val()+'icon_tab/retourx.PNG" style="width:1.5rem;" /> </a> </th> </tr>';
+    $("#tbody_tache_"+type_contrat_abrev).append(view);
